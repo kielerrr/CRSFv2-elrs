@@ -8,7 +8,7 @@ CRSF protocol consists of frames with the following structure: <br />
 Address byte: For transmitting frames: 0xEE, for telemetry frames: 0xEA. <br />
 Frame Length: Length of the type, payload and crc in bytes. It is 24 (0x18) for transmitting frames. <br />
 Type: Type of the payload, 0x16 while transmitting, which corresponds to "RC channels packed". <br />
-Payload: For transmitting frames, it is packed message from 16 channels. Each channel is 11 bits long, so it is 11*16 / 2 = 22 bytes. <br />
+Payload: For transmitting frames, it is packed message from 16 channels. Each channel is 11 bits long, so it is 11*16 / 8 = 22 bytes. <br />
 CRC: CRC8 to check if the message is corrupted with polynomial 0xD5. <br />
 
 An example frame:<br />
