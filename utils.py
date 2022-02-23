@@ -1,6 +1,6 @@
 from crc import crc8
 
-
+# Map from pwm values to ticks
 def us_to_ticks(pwm_values):
     ticks_list = []
     for pwm in pwm_values:
@@ -8,6 +8,7 @@ def us_to_ticks(pwm_values):
         ticks_list.append(int(tick))
     return ticks_list
 
+# Map from ticks to pwm
 def ticks_to_us(ticks_values):
     pwm_list = []
     for ticks in ticks_values:
@@ -15,6 +16,8 @@ def ticks_to_us(ticks_values):
         pwm_list.append(int(pwm))
     return pwm_list
 
+# Pack 16 11-bit channel values to 22 bytes
+# 16*11/8 = 22
 def pack_channels(channel_data):
     # channel data: array of 16 integers
     channel_data = list(reversed(channel_data))
@@ -29,10 +32,8 @@ def pack_channels(channel_data):
     pack_byte = list(reversed(pack_byte))
     return pack_byte
 
+# Calculate crc
 def crc_transmit(type, payload):
     h = crc8()
     h.update(bytearray(type + payload))
     return h.hexdigest()
-
-# a = crc_transmit([16], [232 ,131 ,37 ,250 ,184 ,139 ,62 ,244 ,161 ,15 ,125 ,232 ,67 ,31 ,119 ,185 ,203 ,93 ,238 ,114 ,151 ,187])
-# print(a)

@@ -1,4 +1,3 @@
-
 from com import communication
 import time
 import csv
@@ -31,6 +30,7 @@ dicts = []
 save_after = 100000  # seconds
 t1 = time.time()
 
+# Increase and decrease the throttle in a loop and save the times in a csv file
 while True:
     channels_pwm = [1500, 1500, 1050, 1500, 1800, 1500, 1500, 1500, 1500, 1500, 1500, 1500, 1500, 1500, 1500, 1500]
     com.update_data(channels_pwm)
